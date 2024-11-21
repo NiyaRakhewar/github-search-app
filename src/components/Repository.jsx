@@ -6,9 +6,11 @@ import "./../styles/Repositories.css";
 export const Repository = ({ userData }) => {
   const { username } = useParams();
   const [repo, setRepo] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
+      setLoader(true);
       try {
         const response = await fetch(
           `https://api.github.com/users/${username}/repos`
@@ -16,15 +18,19 @@ export const Repository = ({ userData }) => {
         const data = await response.json();
         console.log("User data:", data);
         setRepo(data);
+        setLoader(false);
       } catch (error) {
         console.error("Error fetching user data:", error);
+        setLoader(false);
       }
     };
 
     fetchUserData();
   }, [username]);
 
-  return (
+  return loader ? (
+    <div>Loading...</div>
+  ) : (
     <div className="repo-main-div">
       <div className="repo-div">
         {repo.map((repo) => (
@@ -87,12 +93,12 @@ export const Repository = ({ userData }) => {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  gap: "1rem"
+                  gap: "1rem",
                 }}
               >
                 <div className="repo-lang-div">
-                  <p style={{margin: 0}}>{repo.language}</p>
-                  <p style={{margin: 0, marginTop: "0.2rem"}}>
+                  <p style={{ margin: 0 }}>{repo.language}</p>
+                  <p style={{ margin: 0, marginTop: "0.2rem" }}>
                     {repo.size} {repo.size > 1000000 ? "MB" : "KB"}
                   </p>
                 </div>

@@ -6,10 +6,10 @@ import "./../styles/Landing.css"
 export const Landing = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [users, setUsers] = useState([]);
-
+ const [loader, setLoader] = useState(false);
   const handleSearch = async (query) => {
     setSearchQuery(query);
-
+    setLoader(true);
     if (query) {
       try {
         const response = await fetch(`https://api.github.com/users`);
@@ -19,9 +19,12 @@ export const Landing = () => {
           user.login.toLowerCase().includes(query.toLowerCase())
         );
         setUsers(filteredUsers);
+        setLoader(false)
       } catch (error) {
         console.error("Error fetching users:", error);
         setUsers([]);
+        setLoader(false)
+
       }
     } else {
       setUsers([]);
@@ -35,7 +38,7 @@ export const Landing = () => {
       <div className="landing-search-div">
         <Search onSearch={handleSearch} />
       </div>
-      {searchQuery && users.length === 0 ? (
+      {searchQuery && users.length === 0 && !loader ? (
         <h2
           style={{
             display: "flex",
