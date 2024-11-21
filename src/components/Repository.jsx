@@ -76,11 +76,19 @@ export const Repository = () => {
                   gap: "0.5rem",
                 }}
               >
-                <h3
-                  style={{ color: "#1976d2", cursor: "pointer", margin: "0" }}
-                >
-                  {repo.name}
-                </h3>
+              <h3
+  style={{
+    color: "#1976d2",
+    cursor: "pointer",
+    margin: "0",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    maxWidth: "100%",
+  }}
+>
+  {repo.name}
+</h3>
                 <div
                   style={{
                     border: "1px solid white",
@@ -94,16 +102,19 @@ export const Repository = () => {
               </div>
               {repo.description && (
                 <p
-                  style={{
-                    textAlign: "left",
-                    /* padding: 0.5rem 0px; */
-                    fontWeight: "lighter",
-                    opacity:'0.7',
-                    margin: "0.5rem 0"
-                  }}
-                >
-                  {repo.description}
-                </p>
+                style={{
+                  textAlign: "left",
+                  fontWeight: "lighter",
+                  opacity: "0.7",
+                  margin: "0.5rem 0",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  maxWidth: "100%",
+                }}
+              >
+                {repo.description}
+              </p>
               )}
               <div
                 style={{

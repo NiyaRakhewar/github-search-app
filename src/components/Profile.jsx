@@ -20,16 +20,16 @@ export const Profile = ({ userData }) => {
             {userData?.login}
           </p>
 
-          <p>
+         {userData?.bio  && <p>
             <span style={{ opacity: "0.6" }}>Bio:</span>{" "}
             {userData?.bio || "No bio available"}
-          </p>
-          <p className="icon-div">
+          </p>}
+         { userData?.company && <p className="icon-div">
             <BusinessIcon className="icons" /> {userData?.company}
-          </p>
-          <p className="icon-div">
+          </p>}
+         {userData?.location && <p className="icon-div">
             <LocationOnIcon className="icons" /> {userData?.location}
-          </p>
+          </p>}
           <p className="icon-div">
             <PeopleOutlineIcon className="icons" />
             <p>
