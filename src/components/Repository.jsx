@@ -22,7 +22,7 @@ export const Repository = ({ userData }) => {
     };
 
     fetchUserData();
-  }, [userData]);
+  }, [username]);
 
   return (
     <div className="repo-main-div">
