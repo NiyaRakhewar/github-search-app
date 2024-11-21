@@ -1,0 +1,17 @@
+.repo-main-div {
+  margin: 2rem 5rem;
+}
+
+.repo-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80vw;
+  max-width: 700px;
+}
+
+.repo-card-div {
+  border: "1px solid white";
+  border-radius: "0.5rem";
+  padding: "1rem";
+}

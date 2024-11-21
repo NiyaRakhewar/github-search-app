@@ -1,0 +1,32 @@
+.profile-main-div,
+.profile-div {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+
+  /* justify-content: center; */
+}
+
+.profile-div {
+  border: "1px solid white";
+  max-width: 900px;
+  width: "60vw";
+}
+
+.profile-img-name-div {
+  align-self: center;
+}
+
+.profile-details {
+  text-align: left;
+}
+
+.icon-div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icons {
+  opacity: 0.6;
+}
