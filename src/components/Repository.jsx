@@ -79,7 +79,6 @@ export const Repository = () => {
               <h3
   style={{
     color: "#1976d2",
-    cursor: "pointer",
     margin: "0",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
