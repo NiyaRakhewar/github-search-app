@@ -96,9 +96,10 @@ export const Repository = () => {
                 <p
                   style={{
                     textAlign: "left",
-                    padding: "0.5rem 0",
+                    /* padding: 0.5rem 0px; */
                     fontWeight: "lighter",
-                    opacity: "0.7",
+                    opacity:'0.7',
+                    margin: "0.5rem 0"
                   }}
                 >
                   {repo.description}
