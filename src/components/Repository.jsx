@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { formatDistanceToNow, parseISO } from "date-fns";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import "./../styles/Repositories.css";
 
-export const Repository = ({ userData }) => {
+export const Repository = () => {
   const { username } = useParams();
   const [repo, setRepo] = useState([]);
   const [loader, setLoader] = useState(false);
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3; 
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -16,7 +22,6 @@ export const Repository = ({ userData }) => {
           `https://api.github.com/users/${username}/repos`
         );
         const data = await response.json();
-        console.log("User data:", data);
         setRepo(data);
         setLoader(false);
       } catch (error) {
@@ -28,12 +33,27 @@ export const Repository = ({ userData }) => {
     fetchUserData();
   }, [username]);
 
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentRepos = repo.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) =>
+      prev < Math.ceil(repo.length / itemsPerPage) ? prev + 1 : prev
+    );
+  };
+
   return loader ? (
     <div>Loading...</div>
   ) : (
     <div className="repo-main-div">
       <div className="repo-div">
-        {repo.map((repo) => (
+        {currentRepos.map((repo) => (
           <div
             className="repo-card-div"
             style={{
@@ -110,6 +130,39 @@ export const Repository = ({ userData }) => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "1rem",
+          gap: "1rem",
+        }}
+      >
+        <button
+          onClick={handlePrev}
+          disabled={currentPage === 1}
+
+          className="pagination-btn"
+       
+        >
+          <NavigateBeforeIcon />
+          Prev
+        </button>
+        <span style={{ color: "white" }}>
+          Page {currentPage} of {Math.ceil(repo.length / itemsPerPage)}
+        </span>
+        <button
+          onClick={handleNext}
+          disabled={currentPage === Math.ceil(repo.length / itemsPerPage)}
+          className="pagination-btn"
+        
+        >
+          Next
+          <NavigateNextIcon />
+        </button>
       </div>
     </div>
   );
