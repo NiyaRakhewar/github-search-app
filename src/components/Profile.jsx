@@ -7,24 +7,11 @@ export const Profile = ({ userData }) => {
   console.log(userData);
   return (
     <div className="profile-main-div">
-      <div
-        className="profile-div"
-        style={{
-          border: "1px solid gray",
-          padding: "2rem 2rem",
-          borderRadius: "0.7rem",
-        }}
-      >
+      <div className="profile-div">
         <img
           src={userData?.avatar_url}
           alt="profile img"
           className="profile-img-name-div"
-          style={{
-            borderRadius: "50%",
-            width: "15rem",
-            height: "15rem",
-            border: "1px solid gray",
-          }}
         />
 
         <div className="profile-details">
@@ -45,10 +32,15 @@ export const Profile = ({ userData }) => {
           </p>
           <p className="icon-div">
             <PeopleOutlineIcon className="icons" />
-            {userData?.followers}{" "}
-            <span style={{ opacity: "0.7" }}>Followers</span> |{" "}
-            {userData?.following}{" "}
-            <span style={{ opacity: "0.7" }}>Following</span>{" "}
+            <p>
+              {userData?.followers}{" "}
+              <span style={{ opacity: "0.7" }}>Followers</span>
+            </p>
+            |
+            <p>
+              {userData?.following}{" "}
+              <span style={{ opacity: "0.7" }}>Following</span>{" "}
+            </p>
           </p>
           <p>
             <span style={{ opacity: "0.6" }}>Repositories: </span>{" "}

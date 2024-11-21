@@ -86,12 +86,17 @@ export const Repository = ({ userData }) => {
                   width: "100%",
                   display: "flex",
                   justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "1rem"
                 }}
               >
-                <p>
-                  🔴 {repo.language} - {repo.size}{" "}
-                  {repo.size > 1000000 ? "MB" : "KB"}
-                </p>
+                <div className="repo-lang-div">
+                  <p style={{margin: 0}}>{repo.language}</p>
+                  <p style={{margin: 0, marginTop: "0.2rem"}}>
+                    {repo.size} {repo.size > 1000000 ? "MB" : "KB"}
+                  </p>
+                </div>
+
                 <p>
                   Updated {formatDistanceToNow(parseISO(repo.updated_at))} ago
                 </p>

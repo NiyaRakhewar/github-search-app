@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Search } from "../components/Search";
 import { UserList } from "../components/UserList";
 import NO_USER from "./../assets/user-not-found.avif";
-
+import "./../styles/Landing.css"
 export const Landing = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [users, setUsers] = useState([]);
@@ -30,15 +30,9 @@ export const Landing = () => {
 
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "2rem",
-      }}
+     className="landing-main-div"
     >
-      <div style={{ width: "22rem", marginTop: "6rem" }}>
+      <div className="landing-search-div">
         <Search onSearch={handleSearch} />
       </div>
       {searchQuery && users.length === 0 ? (

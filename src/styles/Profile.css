@@ -9,13 +9,19 @@
 }
 
 .profile-div {
-  border: "1px solid white";
+  border: 1px solid gray;
   max-width: 900px;
-  width: "60vw";
+  width: 60vw;
+  padding: 2rem 2rem;
+  border-radius: 0.7rem;
 }
 
 .profile-img-name-div {
   align-self: center;
+  border-radius: 50%;
+  width: 12rem;
+  height: 12rem;
+  border: 1px solid gray;
 }
 
 .profile-details {
@@ -25,8 +31,37 @@
 .icon-div {
   display: flex;
   gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .icons {
   opacity: 0.6;
+}
+
+.icon-div p {
+  margin: 0;
+  align-self: flex-start;
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media screen and (max-width: 900px) {
+  .profile-main-div,
+  .profile-div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 0.2rem;
+  }
+  .profile-img-name-div {
+    align-self: center;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+  }
+  .profile-div {
+    width: 65vw;
+  }
 }
