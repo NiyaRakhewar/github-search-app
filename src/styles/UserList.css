@@ -1,0 +1,17 @@
+.user-list-main-div {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  gap: 1 rem;
+  justify-content: center;
+  /* margin-top: 3; */
+  width: 30%;
+  max-width: 300px;
+}
+
+@media screen and (max-width: 500px) {
+  .user-list-main-div {
+    width: 70%;
+    max-width: 300px;
+  }
+}

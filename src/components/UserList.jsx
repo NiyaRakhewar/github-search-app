@@ -5,21 +5,17 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-
+import "./../styles/UserList.css"
 export const UserList = ({ users }) => {
   console.log(users);
   const navigate = useNavigate();
   return (
     <Box
-      sx={{
-        display: "flex",
-        // flexDirection: "column",
-        flexWrap: "wrap",
-        gap: 3,
-        justifyContent: "center",
-        mt: 3,
-        width: "75%",
-      }}
+    className="user-list-main-div"
+    sx={{mt
+      : 3,
+      gap: "0.7rem",
+    }}
     >
       {users.map((user) => (
         <Card
